@@ -38,7 +38,7 @@ public class JWTUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody()
-                .getExpiration().before(new Date());
+                .getExpiration().before(new Date(System.currentTimeMillis()));
     }
     public String createJwt(String username, String role, Long expiredMs){
         return Jwts.builder()
